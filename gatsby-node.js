@@ -59,8 +59,8 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // pages
   query.data.wpgraphql.pages.edges.forEach(edge => {
-    if (edge.node.uri === "global-information/" || edge.node.uri === "/") {
-      // console.log('skip: ' + edge.node.uri)
+    if (edge.node.uri === "/global-information/" || edge.node.uri === "/home/") {
+      console.log('skip: ' + edge.node.uri)
     } else {
       createPage({
         component: pageFilter,
