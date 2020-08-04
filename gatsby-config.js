@@ -1,10 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    siteUrl: `https://leasefinds.netlify.app`,
+    title: `LeaseFinds`,
+    description: `LeaseFinds`,
+    image: `/icons/icon.png`,
+    siteName: "2Marketing",
+    siteLanguage: "",
+    ogLanguage: "en_US",
+    icon: `/icons/icon.png`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -18,17 +24,37 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `LeaseFinds`,
+        short_name: `LeaseFinds`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: "WPGraphQL",
+        fieldName: "wpgraphql",
+        url: `https://leasefinds.wptestprev.icu/graphql`,
+        refetchInterval: 30,
+      },
+    },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-preload-fonts`,
+    `gatsby-plugin-anchor-links`
+    // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     custom: {
+    //       families: ["SFProDisplay"],
+    //       urls: ["/fonts/fonts.css"],
+    //     },
+    //   },
+    // },
+    // `gatsby-plugin-preact`,
   ],
 }

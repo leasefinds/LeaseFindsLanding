@@ -1,0 +1,24 @@
+.Section {
+  background-color: rgba(6, 60, 90, 1);
+  color: #ffffff;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  strong {
+    font-size: 18px;
+  }
+
+  p {
+    margin-bottom: 0px;
+    font-size: 16px;
+  }
+}
+
+  @media(max-width: 767px) {
+      .Section {
+        .Step:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+  }

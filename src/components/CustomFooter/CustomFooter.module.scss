@@ -1,0 +1,26 @@
+.Section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      padding: 0 30px;
+      margin: 0;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: rgb(6, 60, 90);
+  }
+
+  a {
+    text-decoration: underline;
+    font-size: 14px;
+    color: rgb(6, 60, 90);
+  }
+}

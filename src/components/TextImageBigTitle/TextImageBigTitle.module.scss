@@ -1,0 +1,54 @@
+.Section {
+  .Container {
+    max-width: 960px;
+  }
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .Row {
+    display: flex;
+    align-items: center;
+  }
+
+  .Row2 {
+    text-align: center;
+
+    .Content {
+      margin-bottom: 30px;
+      padding-left: 0;
+    }
+  }
+
+  .Content {
+    font-size: 18px;
+    padding-left: 50px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    text-align: center;
+
+    .Content {
+        margin-bottom: 30px;
+        padding-left: 0;
+    }
+
+    .Row {
+        flex-direction: column-reverse;
+    }
+
+    h2 {
+      font-size: 37px;
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -1,22 +1,92 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import HeroMain from "../components/HeroMain/HeroMain"
+import FeaturedOn from "../components/FeaturedOn/FeaturedOn"
+import TextWithImage from "../components/TextWithImage/TextWithImage"
+import SimpleProcess from "../components/SimpleProcess/SimpleProcess"
+import Faqs from "../components/Faqs/Faqs"
+import ImageSection from "../components/ImageSection/ImageSection"
 
-export default IndexPage
+const Home = ({ data, location }) => {
+  const sections = data.wpgraphql.page.sectionFields.sections
+
+  const showMenu = data.wpgraphql.page.sectionFields.showMenu
+  const showFooter = data.wpgraphql.page.sectionFields.showFooter
+
+  return (
+    <Layout showFooter={showFooter} showMenu={showMenu} location={location}>
+      {sections.map((section, index) => {
+        const typeName = section.__typename
+
+        switch (typeName) {
+          case "WPGraphQL_Page_Sectionfields_Sections_HeroMain":
+            return <HeroMain key={index} {...section} />
+
+          case "WPGraphQL_Page_Sectionfields_Sections_FeaturedOn":
+            return <FeaturedOn key={index} {...section} />
+
+          case "WPGraphQL_Page_Sectionfields_Sections_TextWithImage":
+            return <TextWithImage key={index} {...section} />
+
+          case "WPGraphQL_Page_Sectionfields_Sections_SimpleProcess":
+            return <SimpleProcess key={index} {...section} />
+
+          case "WPGraphQL_Page_Sectionfields_Sections_Faqs":
+            return <Faqs key={index} {...section} />
+
+          case "WPGraphQL_Page_Sectionfields_Sections_Image":
+            return <ImageSection key={index} {...section} />
+
+          default:
+            return ""
+        }
+      })}
+    </Layout>
+  )
+}
+
+export default Home
+
+export const homeQ = graphql`
+  query {
+    wpgraphql {
+      page(id: "home", idType: URI) {
+        id
+        featuredImage {
+          node {
+            sourceUrl
+            imageFile {
+              childImageSharp {
+                fluid(quality: 100, maxWidth: 400) {
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
+                }
+              }
+            }
+          }
+        }
+        title
+        slug
+        modified
+        date
+        seo {
+          title
+          metaDesc
+        }
+        sectionFields {
+          showMenu
+          showFooter
+          sections {
+            ...HeroMain
+            ...FeaturedOn
+            ...TextWithImage
+            ...SimpleProcess
+            ...Faqs
+            ...ImageSection
+          }
+        }
+      }
+    }
+  }
+`

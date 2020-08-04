@@ -1,0 +1,29 @@
+.Section {
+  .Container {
+    max-width: 960px;
+  }
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .Image {
+    margin-bottom: 10px;
+  }
+
+  .ColumnInner {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    h2 {
+      font-size: 37px;
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.Section {
+  .Row {
+    display: flex;
+    align-items: center;
+  }
+
+  .Content {
+    margin-right: 30px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    a {
+      margin: 0 auto;
+    }
+
+    .Content {
+      text-align: center;
+      margin-right: 0;
+    }
+    .ImageCol {
+      margin-top: 80px;
+    }
+  }
+}

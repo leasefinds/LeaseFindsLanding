@@ -1,0 +1,26 @@
+.Section {
+  h2 {
+    max-width: 600px;
+  }
+  .Row {
+    display: flex;
+    align-items: center;
+  }
+  .Image {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    text-align: center;
+
+    a {
+      margin: 0 auto;
+    }
+    .Image {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
+}

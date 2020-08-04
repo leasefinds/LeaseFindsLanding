@@ -1,0 +1,33 @@
+.Footer {
+  padding-top: 50px;
+  padding-bottom: 70px;
+  background-color: #000000;
+  color: #ffffff;
+
+
+
+  .Disclaimer {
+    font-size: 14px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 767px) {
+  .Footer {
+    text-align: center;
+  }
+}

@@ -1,0 +1,88 @@
+.Section {
+  // padding-bottom: 20px;
+  // padding-top: 100px;
+
+  .MainTitle {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .Wrapper1 {
+    width: 100%;
+
+    .Title {
+      background: #251140;
+      padding: 15px 20px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .Content {
+      padding: 20px;
+      color: #251140;
+      font-size: 20px;
+    }
+  }
+
+  .Wrapper2 {
+    background: #80d1f2;
+    width: 100%;
+    padding: 35px 40px;
+    margin-bottom: 30px;
+
+    .Title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .Content {
+      font-size: 16px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .Wrapper3 {
+    background-color: #251140;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding: 20px 30px;
+    text-align: center;
+    border-radius: 6px;
+
+    .Title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .Content {
+      font-size: 16px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    .Wrapper1 {
+      .Content {
+        font-size: 16px;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .Wrapper2 {
+      padding: 25px;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+.FormContainer {
+  display: block;
+  background: rgba(128, 209, 242, 1);
+  border-style: none;
+  border-radius: 6px;
+  padding: 10px 20px 5px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  .Title {
+    margin-bottom: 0;
+    font-weight: 700;
+    margin-top: 20px;
+    line-height: 1;
+  }
+
+  .FieldsContainer {
+    display: flex;
+    flex-direction: row;
+
+    label {
+      display: block;
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+      color: #24113f;
+      margin-bottom: 4px;
+      width: auto;
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 39px;
+      border: solid 1px #24113f;
+      font-size: 16px;
+      padding: 2px 10px;
+    }
+  }
+
+  .Wrapper {
+    flex: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    display: block;
+    border-style: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 59px;
+    background: rgba(36, 17, 63, 1);
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .FormContainer {
+    .FieldsContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

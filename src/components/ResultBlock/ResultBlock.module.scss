@@ -1,0 +1,59 @@
+.Section {
+  padding-top: 30px;
+
+  h1 {
+    font-size: 48px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .LastLine {
+    display: flex;
+  }
+
+  .Line1 {
+    font-size: 22px;
+  }
+
+  .Content {
+    font-size: 18px;
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    h1 {
+      font-size: 37px;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .LinesWrapper {
+      display: flex;
+      flex-direction: column;
+
+      .Line1 {
+        order: 1;
+      }
+      .MobileForm {
+        order: 2;
+      }
+      .Line2 {
+        order: 4;
+      }
+      .Line3 {
+        order: 5;
+      }
+
+      .LastLine {
+        order: 3;
+      }
+    }
+  }
+}

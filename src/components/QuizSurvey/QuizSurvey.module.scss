@@ -1,0 +1,102 @@
+.Section {
+  .Title {
+    h1 {
+      font-size: 48px;
+    }
+  }
+
+  .TextBlue {
+    color: #3d6af2;
+    font-weight: 700;
+    font-size: 24px;
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+
+  .TextNormal {
+    font-size: 20px;
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  .TextYellow {
+    background: rgba(242, 195, 55, 1);
+    border-style: none;
+    border-radius: 4px;
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 10px 25px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: "";
+      background-image: url(../../images/i.png);
+      display: block;
+      min-width: 22px;
+      height: 22px;
+      margin-right: 20px;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+  }
+
+  .WrapperCol {
+    text-align: center;
+  }
+}
+
+.Survey {
+  display: block;
+  background: rgba(255, 255, 255, 1);
+  border-style: dotted;
+  border-width: 5px;
+  border-color: #24113f;
+  border-radius: 0px;
+
+  margin-top: 60px;
+  height: auto;
+  min-height: 200px;
+  padding: 30px;
+}
+
+@media (max-width: 767px) {
+  .Section {
+    .Title {
+      h1 {
+        font-size: 32px;
+
+        br {
+          display: none;
+        }
+      }
+    }
+
+    .TextBlue {
+      font-size: 22px;
+
+      br {
+        display: none;
+      }
+    }
+
+    .TextNormal {
+      font-size: 18px;
+    }
+
+    .TextYellow {
+      p {
+        margin-bottom: 0;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+header {
+  .TopRow {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .Logo {
+    max-width: 181px;
+  }
+
+  .SecureWrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .SecureLogo {
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+  }
+
+  .Menu {
+    background-color: #24113f;
+  }
+
+  .Navbar {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .Toggle {
+    position: absolute;
+    right: 0;
+    top: -60px;
+    border: none;    
+
+    span {
+      background-image: url(../../images/hamburger.svg) !important;
+    }
+  }
+
+  .Collapse {
+    // bootstrap navbar-nav
+    > div {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  a {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    padding: 15px 30px;
+    transition: 0.3s;
+
+    &:hover {
+      text-decoration: none;
+      background: rgba(128, 209, 242, 1);
+      box-shadow: none;
+      color: #24113f;
+    }
+  }
+}
+@media (max-width: 1100px) {
+  header {
+    a {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  header {
+    .SecureLogo {
+      max-width: 71px;
+    }
+
+    .SecureMargin {
+      margin-right: 67px;
+    }
+
+    .SecureWrapper {
+      justify-content: flex-end;
+      padding-left: 0;
+    }
+
+    .Collapse {
+      // bootstrap navbar-nav
+      > div {
+       padding: 20px;
+      }
+    }
+  }
+}

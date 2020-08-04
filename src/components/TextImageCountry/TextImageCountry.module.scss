@@ -1,0 +1,43 @@
+.Section {
+  padding-bottom: 120px;
+
+  .Image {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .Row {
+    align-items: center;
+  }
+
+  .Content {
+    font-size: 18px;
+  }
+
+  .Inner {
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Section {
+    padding-top: 0 !important;
+    .Inner {
+      padding-left: 0;
+    }
+
+    .Row {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    a {
+      margin: 20px auto 40px auto;
+    }
+
+    .Image {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+}
