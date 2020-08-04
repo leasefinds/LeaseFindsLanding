@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 import queryString from "query-string"
-import Timer from "../hooks/Timer"
+import Timer from "../hooks/timer"
 import ResultForm from "./ResultForm/ResultForm"
 
 import StepForm from "./ResultFormStep/StepForm"
