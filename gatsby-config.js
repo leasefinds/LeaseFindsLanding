@@ -4,7 +4,7 @@ module.exports = {
     title: `LeaseFinds`,
     description: `LeaseFinds`,
     image: `/icons/icon.png`,
-    siteName: "2Marketing",
+    siteName: "LeaseFinds",
     siteLanguage: "",
     ogLanguage: "en_US",
     icon: `/icons/icon.png`,

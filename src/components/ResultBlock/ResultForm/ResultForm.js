@@ -41,6 +41,8 @@ class ResultForm extends Component {
               required
               value={phone}
               onChange={this.handleChange}
+              pattern="^([0-9\(\)\/\+ \-]*)$"
+
               //   pattern="^(\+?1[ -]?)?\(?[2-9]\d\d\)?[ -]?[2-9]\d\d[ -]?\d{4}$"
             ></input>
           </div>
