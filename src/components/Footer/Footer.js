@@ -53,7 +53,7 @@ const Footer = ({ showFooter = true}) => {
                 <ul>
                   {usefulLinks.map((item, index) => (
                     <li key={index}>
-                      <Link to={item.url}>{item.name}</Link>
+                      <a href={`https://leasefinds.com${item.url}`} target="_blank">{item.name}</a>
                     </li>
                   ))}
                 </ul>
