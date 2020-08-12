@@ -45,16 +45,14 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-preload-fonts`,
-    `gatsby-plugin-anchor-links`
-    // {
-    //   resolve: "gatsby-plugin-web-font-loader",
-    //   options: {
-    //     custom: {
-    //       families: ["SFProDisplay"],
-    //       urls: ["/fonts/fonts.css"],
-    //     },
-    //   },
-    // },
+    `gatsby-plugin-anchor-links`,
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-MDV7KNF",
+        includeInDevelopment: false,
+      },
+    },
     // `gatsby-plugin-preact`,
   ],
 }
