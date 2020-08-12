@@ -19,21 +19,27 @@ import ResultBlock2 from "../components/ResultBlock/ResultBlock2"
 import OurFeatures from "../components/OurFeatures/OurFeatures"
 import TextImageBigTitle from "../components/TextImageBigTitle/TextImageBigTitle"
 import ThankYou from "../components/ThankYou/ThankYou"
-
 import TopLineText from "../components/TopLineText/TopLineText"
-
 import YourDetailsForm from "../components/YourDetailsForm/YourDetailsForm"
 import YourDetailsSteps from "../components/YourDetailsSteps/YourDetailsSteps"
 import CustomFooter from "../components/CustomFooter/CustomFooter"
+import SEO from "../components/seo"
 
 const Page = ({ data, location }) => {
   const sections = data.wpgraphql.page.sectionFields.sections
-
   const showMenu = data.wpgraphql.page.sectionFields.showMenu
   const showFooter = data.wpgraphql.page.sectionFields.showFooter
 
   return (
     <Layout showFooter={showFooter} showMenu={showMenu} location={location}>
+      <SEO
+        wpseo={data.wpgraphql.page.seo}
+        wpimage={
+          data.wpgraphql.page.featuredImage
+            ? data.wpgraphql.page.featuredImage.node
+            : null
+        }
+      />
       {sections.map((section, index) => {
         const typeName = section.__typename
 
@@ -161,7 +167,6 @@ export const pageQ = graphql`
           title
           metaDesc
         }
-
         sectionFields {
           showMenu
           showFooter

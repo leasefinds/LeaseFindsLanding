@@ -8,6 +8,8 @@ import TextWithImage from "../components/TextWithImage/TextWithImage"
 import SimpleProcess from "../components/SimpleProcess/SimpleProcess"
 import Faqs from "../components/Faqs/Faqs"
 import ImageSection from "../components/ImageSection/ImageSection"
+import SEO from "../components/seo"
+
 
 const Home = ({ data, location }) => {
   const sections = data.wpgraphql.page.sectionFields.sections
@@ -17,6 +19,14 @@ const Home = ({ data, location }) => {
 
   return (
     <Layout showFooter={showFooter} showMenu={showMenu} location={location}>
+      <SEO
+        wpseo={data.wpgraphql.page.seo}
+        wpimage={
+          data.wpgraphql.page.featuredImage
+            ? data.wpgraphql.page.featuredImage.node
+            : null
+        }
+      />
       {sections.map((section, index) => {
         const typeName = section.__typename
 

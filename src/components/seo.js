@@ -1,84 +1,129 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `
-  )
+const SEO = ({ wpimage, wpseo, article, date, modified, author }) => {
+  // title desc from wordpress
+  const { title, metaDesc } = wpseo
+  const featuredImage = wpimage ? wpimage : false
 
-  const metaDescription = description || site.siteMetadata.description
+  const { pathname } = useLocation()
+  const { site } = useStaticQuery(query)
+  const {
+    defaultTitle,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    siteLanguage,
+    ogLanguage,
+    siteName,
+  } = site.siteMetadata
+
+  const seo = {
+    title: title || defaultTitle,
+    description: metaDesc || defaultDescription,
+    image: featuredImage
+      ? `${siteUrl}${featuredImage.imageFile.childImageSharp.fluid.src}`
+      : `${siteUrl}${defaultImage}`,
+    url: `${siteUrl}${pathname}`,
+  }
+
+  const baseSchema = [
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      url: seo.url,
+      name: seo.title,
+    },
+  ]
+
+  const schema = article
+    ? [
+        ...baseSchema,
+        {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          url: seo.url,
+          name: seo.title,
+          headline: seo.title,
+          image: {
+            "@type": "ImageObject",
+            url: seo.image,
+          },
+          description: seo.description,
+          datePublished: date,
+          dateModified: modified,
+          author: {
+            "@type": "Person",
+            name: author.firstName,
+          },
+          publisher: {
+            "@type": "Organization",
+            name: siteName,
+            url: seo.url,
+            logo: {
+              "@type": "ImageObject",
+              url: defaultImage,
+            },
+          },
+        },
+      ]
+    : baseSchema
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-      
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Helmet title={seo.title}>
+      <html lang={siteLanguage} />
+      {seo.description && <meta name="description" content={seo.description} />}
+      <meta name="image" content={seo.image} />
+      <link rel="canonical" href={seo.url} />
+
+      {/* facebook meta */}
+      {article ? (
+        <meta property="og:type" content="article" />
+      ) : (
+        <meta property="og:type" content="website" />
+      )}
+
+      <meta property="og:locale" content={ogLanguage} />
+      {seo.title && <meta property="og:title" content={seo.title} />}
+      {seo.description && (
+        <meta property="og:description" content={seo.description} />
+      )}
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      <meta property="og:site_name" content={siteName} />
+      {seo.image && <meta property="og:image" content={seo.image} />}
+
+      {/* twitter meta */}
+      <meta name="twitter:card" content="summary" />
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+      {seo.description && (
+        <meta name="twitter:description" content={seo.description} />
+      )}
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
+
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
   )
 }
+export default SEO
 
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
+  article: false,
 }
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        defaultDescription: description
+        siteUrl
+        defaultImage: image
+        siteLanguage
+        ogLanguage
+        siteName
+      }
+    }
+  }
+`
