@@ -247,6 +247,12 @@ const StepForm = ({ query }) => {
         </p>
 
         {handleSteps(steps)}
+
+        <input hidden type="text" name="firstName" />
+        <input hidden type="text" name="lastName" />
+        <input hidden type="email" name="email" />
+        <input hidden type="tel" name="phone" />
+        <input hidden type="text" name="postcode" />
       </form>
     </div>
   )
