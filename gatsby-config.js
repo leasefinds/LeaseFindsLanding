@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://leasefinds.netlify.app`,
+    siteUrl: `https://leasefinds-landing.netlify.app`,
     title: `LeaseFinds`,
     description: ``,
     image: `/icons/icon.png`,
@@ -39,7 +39,7 @@ module.exports = {
       options: {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
-        url: `https://leasefinds.wptestprev.icu/graphql`,
+        url: `https://api-landing.leasefinds.com/graphql`,
         refetchInterval: 30,
       },
     },
