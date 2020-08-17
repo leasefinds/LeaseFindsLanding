@@ -3,6 +3,12 @@ import { navigate } from "gatsby"
 
 import styles from "./DForm.module.scss"
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
 class DForm extends Component {
   constructor(props) {
     super(props)
@@ -11,16 +17,25 @@ class DForm extends Component {
       lastName: "",
       phone: "",
       email: "",
-      brand: "",
+      brand: "DEFAULT - Ford",
       postalcode: "",
     }
   }
 
   handleSubmit = e => {
-    console.log(this.state)
-    navigate("/thanks/")
-
     e.preventDefault()
+
+    const form = e.target
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "LeaseFinds LP NEW LEAD - Details Form",
+        ...this.state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch(error => alert(error))
   }
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
@@ -32,7 +47,26 @@ class DForm extends Component {
         <div className={styles.Wrapper}>
           <p className={styles.Title}>Your details</p>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form
+          name="LeaseFinds LP NEW LEAD - Details Form"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thanks/"
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            type="hidden"
+            name="form-name"
+            value="LeaseFinds LP NEW LEAD - Details Form"
+          />
+
+          <p className="hidden">
+            <label>
+              Don’t fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
           <div className={styles.FieldsContainer}>
             <div className={styles.Wrapper}>
               <label htmlFor="first_name">First Name</label>
@@ -94,11 +128,10 @@ class DForm extends Component {
               <select
                 id="brand"
                 name="brand"
-                value={brand}
                 onChange={this.handleChange}
                 required
+                value={brand}
               >
-                <option value="Toyota">Toyota</option>
                 <option value="Ford">Ford</option>
                 <option value="Honda">Honda</option>
                 <option value="Tesla">Tesla</option>

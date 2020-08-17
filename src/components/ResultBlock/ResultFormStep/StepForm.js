@@ -14,7 +14,9 @@ const emailRegex = RegExp(/^[^@]+@[^@]+\.[^@]+$/)
 
 const phoneRegex = RegExp(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
 
-const StepForm = () => {
+const StepForm = ({ query }) => {
+  console.log(query)
+
   const [steps, setSteps] = useState(0)
   const [fields, setFields] = useState({
     email: "",
@@ -37,24 +39,16 @@ const StepForm = () => {
     if (steps === 5) {
       e.preventDefault()
 
-      //   fetch("/", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      //     body: encode({
-      //       "form-name": "2M NEW LEAD - Main Form",
-      //       ...fields,
-      //     }),
-      //   })
-      //     .then(navigate("/thanks"))
-      //     .catch(error => alert(error))
-
-      navigate("/thanks/")
-
-    //   console.log("fields")
-    //   console.log(fields)
-    //   console.log("steps")
-    //   console.log(`is error`)
-    //   console.log(isError)
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "LeaseFinds LP NEW LEAD - Step Form Results",
+          ...fields,
+        }),
+      })
+        .then(navigate("/thanks/"))
+        .catch(error => alert(error))
     } else {
       setSteps(steps + 1)
 
@@ -229,20 +223,30 @@ const StepForm = () => {
         <strong>Claim your free consultation</strong>
       </div>
 
-      <ProgressBar className={styles.ProgressBar} now={(steps + 1) * 16.6666666667} />
+      <ProgressBar
+        className={styles.ProgressBar}
+        now={(steps + 1) * 16.6666666667}
+      />
       <form
-        name="LeaseFinds - Step Form"
         method="post"
-        // data-netlify="true"
         className="step-form"
+        name="LeaseFinds LP NEW LEAD - Step Form Results"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
       >
-        {/* <input type="hidden" name="form-name" value="2M NEW LEAD - Main Form" /> */}
+        <input
+          type="hidden"
+          name="form-name"
+          value="LeaseFinds LP NEW LEAD - Step Form Results"
+        />
+
+        <p className="hidden">
+          <label>
+            Don’t fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
 
         {handleSteps(steps)}
-        {/* 
-        <input hidden type="text" name="budget" />
-        <input hidden type="text" name="email" />
-        <input hidden type="text" name="project" /> */}
       </form>
     </div>
   )

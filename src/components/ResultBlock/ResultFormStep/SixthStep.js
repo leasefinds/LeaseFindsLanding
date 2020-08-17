@@ -45,7 +45,7 @@ const SixthStep = ({
         <label htmlFor="consent">
           At Lease Finds we take your privacy seriously and we only use your
           personal information in accordance with our{" "}
-          <a href="/privacy-policy/" target="_blank">
+          <a href="https://leasefinds.com/privacy-policy/" target="_blank">
             privacy policy
           </a>
           . Please check this box to consent with our privacy policy.

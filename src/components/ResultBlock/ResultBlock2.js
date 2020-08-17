@@ -94,6 +94,8 @@ class ResultBlock2 extends Component {
   }
 
   render() {
+
+
     return (
       <section
         id={this.props.id ? this.props.id : null}
@@ -160,9 +162,9 @@ class ResultBlock2 extends Component {
             {this.state.windowWidth > 767 ? (
               <Col md={6}>
                 {this.props.formType === "step" ? (
-                  <StepForm query={this.props.query} />
+                  <StepForm query={this.state.query} />
                 ) : (
-                  <ResultForm query={this.props.query} />
+                  <ResultForm query={this.state.query} />
                 )}
               </Col>
             ) : null}
