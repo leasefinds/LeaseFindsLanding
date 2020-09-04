@@ -58,35 +58,35 @@ class ResultBlock2 extends Component {
       result = result.replace(
         "[monthly_cost]",
         query.monthly_cost
-          ? `<strong>${query.monthly_cost}</strong>`
-          : "£1000.00"
+          ? `<strong class="price">${query.monthly_cost}</strong>`
+          : "0"
       )
     }
     if (query.months_paying) {
       result = result.replace(
         "[months_paying]",
-        query.months_paying ? `${query.months_paying}` : "000"
+        query.months_paying ? `${query.months_paying}` : "0"
       )
     }
 
     if (query.deposit) {
       result = result.replace(
         "[deposit]",
-        query.deposit ? `<strong>${query.deposit}%</strong>` : "00%"
+        query.deposit ? `<strong>${query.deposit}%</strong>` : "0%"
       )
     }
 
     if (query.car_value) {
       result = result.replace(
         "[car_value]",
-        query.car_value ? `<strong>${query.car_value}</strong>` : "£000,000.00"
+        query.car_value ? `<strong>${query.car_value}</strong>` : "$000,000.00"
       )
     }
 
     if (query.fuel) {
       result = result.replace(
         "[fuel]",
-        query.fuel ? `<strong>${query.fuel}</strong>` : "electric"
+        query.fuel ? `<strong>${query.fuel}</strong>` : "fuel"
       )
     }
 

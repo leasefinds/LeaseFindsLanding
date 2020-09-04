@@ -669,6 +669,10 @@ h2 {
   font-weight: 700;
 }
 
+.price {
+  font-size: 40px;
+}
+
 .hidden {
   display: none;
 }
@@ -758,8 +762,10 @@ section {
 }
 
 .counter {
-  width: 75px;
+  width: 93px;
   font-weight: bold;
+  color: #3d6af2;
+  font-size: 23px;
 }
 
 @media (max-width: 767px) {
